@@ -4,7 +4,7 @@ let daftarProduk = [];
 
 // KONFIGURASI PAGINATION
 let currentPage = 1;
-const itemsPerPage = 10; // Pas untuk grid 2 kolom
+const itemsPerPage = 10; // Tetap 10 agar pas dengan grid 5 kolom di PC (2 baris)
 
 // FUNGSI MENGACAK URUTAN
 function shuffleArray(array) {
@@ -80,7 +80,7 @@ function tampilkanProduk(filter = 'semua', page = 1) {
         if (!p.judul) return;
         grid.innerHTML += `
             <div class="card">
-                <img src="${p.gambar}" alt="${p.judul}" loading="lazy">
+                <img src="${p.gambar}" alt="${p.judul}" loading="lazy" style="object-fit: cover; object-position: center;">
                 <div class="content">
                     <div class="title">${p.judul}</div>
                     <div class="sold-info">🔥 Terjual ${p.terjual || '0'}</div>
