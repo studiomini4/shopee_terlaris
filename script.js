@@ -4,7 +4,7 @@ let daftarProduk = [];
 
 // KONFIGURASI PAGINATION
 let currentPage = 1;
-const itemsPerPage = 10; // Tetap 10 agar pas dengan grid 5 kolom di PC (2 baris)
+const itemsPerPage = 10; 
 
 // FUNGSI MENGACAK URUTAN
 function shuffleArray(array) {
@@ -20,11 +20,18 @@ function buatTabOtomatis() {
     const tabNav = document.getElementById('tabNav');
     if (!tabNav) return;
     
-    const kategoriUnik = ['semua', ...new Set(daftarProduk.map(p => p.kategori.toLowerCase().trim()))];
+    // Ambil kategori unik
+    const kategoriUnik = [...new Set(daftarProduk.map(p => p.kategori.toLowerCase().trim()))];
+    
+    // Acak kategori selain 'semua'
+    let kategoriAcak = shuffleArray(kategoriUnik.filter(k => k !== 'semua'));
+    
+    // Gabungkan: 'semua' selalu di depan, diikuti kategori acak
+    const finalKategori = ['semua', ...kategoriAcak];
     
     tabNav.innerHTML = ''; 
     
-    kategoriUnik.forEach(kat => {
+    finalKategori.forEach(kat => {
         const btn = document.createElement('button');
         btn.className = `tab-btn ${kat === 'semua' ? 'active' : ''}`;
         btn.innerText = kat.charAt(0).toUpperCase() + kat.slice(1);
@@ -112,6 +119,13 @@ function filterProduk(kat, btn) {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     tampilkanProduk(kat, 1);
+}
+
+// FUNGSI SCROLL NAVIGASI (PANAH)
+function scrollTab(direction) {
+    const tabNav = document.getElementById('tabNav');
+    const scrollAmount = 200; 
+    tabNav.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
 }
 
 // JALANKAN SAAT STARTUP
