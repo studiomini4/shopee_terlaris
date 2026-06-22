@@ -8,6 +8,78 @@
         :root { --shopee-orange: #ee4d2d; --bg-color: #f7f7f7; --text-dark: #333; }
         body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg-color); margin: 0; padding: 0; }
         
+        /* HEADER */
+        header { background: var(--shopee-orange); text-align: center; padding: 30px 15px; }
+        .header-wrapper { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .logo-gif { height: 80px; width: 80px; border-radius: 12px; border: 3px solid white; object-fit: cover; }
+        header h1 { margin: 0; color: white; font-size: 28px; font-weight: 800; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+        header p { margin: 0; color: #fff8f5; font-size: 1em; opacity: 0.9; }
+
+        /* TAB NAV */
+        .nav-wrapper { background: white; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .scroll-hint { font-size: 10px; color: #999; text-align: center; padding: 4px 0; background: #fff; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #eee; }
+        .tab-nav { display: flex; justify-content: center; overflow-x: auto; scrollbar-width: none; padding: 0 10px; }
+        .tab-nav::-webkit-scrollbar { display: none; }
+        .tab-btn { padding: 15px 20px; border: none; background: none; cursor: pointer; font-weight: 600; color: #777; white-space: nowrap; border-bottom: 3px solid transparent; transition: 0.3s; }
+        .tab-btn.active { color: var(--shopee-orange); border-bottom: 3px solid var(--shopee-orange); }
+
+        /* GRID RESPONSIVE (PENTING UNTUK PC) */
+        .container { max-width: 1200px; margin: 20px auto; display: grid; gap: 15px; padding: 0 15px;
+                     grid-template-columns: repeat(2, 1fr); /* Default HP */ }
+        
+        /* Tampilan Tablet */
+        @media (min-width: 600px) { .container { grid-template-columns: repeat(3, 1fr); } }
+        /* Tampilan Desktop Kecil */
+        @media (min-width: 900px) { .container { grid-template-columns: repeat(4, 1fr); } }
+        /* Tampilan Desktop Lebar */
+        @media (min-width: 1200px) { .container { grid-template-columns: repeat(5, 1fr); } }
+
+        .card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 180px; object-fit: cover; }
+        .content { padding: 12px; }
+        .title { font-size: 0.9em; font-weight: bold; margin-bottom: 5px; height: 40px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+        .sold-info { font-size: 0.8em; color: #ff4500; font-weight: bold; margin-bottom: 10px; }
+        .btn-shopee { display: block; text-align: center; background-color: var(--shopee-orange); color: white; text-decoration: none; padding: 10px; border-radius: 4px; font-weight: bold; font-size: 0.85em; }
+
+        footer { text-align: center; padding: 40px; color: #999; font-size: 0.8em; background: #f7f7f7; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-wrapper">
+        <img src="logoweb.gif" alt="Logo" class="logo-gif">
+        <div>
+            <h1>SHOPEE PRODUK TERLARIS</h1>
+            <p>Pilihan terbaik khusus untuk anda</p>
+        </div>
+    </div>
+</header>
+
+<div class="nav-wrapper">
+    <div class="scroll-hint">← Geser untuk kategori lain →</div>
+    <div class="tab-nav" id="tabNav"></div>
+</div>
+
+<div class="container" id="productGrid"></div>
+
+<footer>
+    <p>&copy; 2026 STUDIOMINI Affiliate. Semua produk diarahkan ke Shopee Indonesia.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Mini | Produk Terlaris Shopee</title>
+    <style>
+        :root { --shopee-orange: #ee4d2d; --bg-color: #f7f7f7; --text-dark: #333; }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg-color); margin: 0; padding: 0; }
+        
         /* HEADER RAPI */
         header { background: var(--shopee-orange); text-align: center; padding: 20px 15px; }
         .header-wrapper { display: flex; flex-direction: column; align-items: center; gap: 10px; }
