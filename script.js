@@ -20,13 +20,8 @@ function buatTabOtomatis() {
     const tabNav = document.getElementById('tabNav');
     if (!tabNav) return;
     
-    // Ambil kategori unik
     const kategoriUnik = [...new Set(daftarProduk.map(p => p.kategori.toLowerCase().trim()))];
-    
-    // Acak kategori selain 'semua'
     let kategoriAcak = shuffleArray(kategoriUnik.filter(k => k !== 'semua'));
-    
-    // Gabungkan: 'semua' selalu di depan, diikuti kategori acak
     const finalKategori = ['semua', ...kategoriAcak];
     
     tabNav.innerHTML = ''; 
@@ -91,7 +86,7 @@ function tampilkanProduk(filter = 'semua', page = 1) {
                 <div class="content">
                     <div class="title">${p.judul}</div>
                     <div class="sold-info">🔥 Terjual ${p.terjual || '0'}</div>
-                    <a href="${p.link}" target="_blank" class="btn-shopee">Lihat Produk</a>
+                    <a href="${p.link}" target="_blank" class="btn-shopee">Lihat Barang</a>
                 </div>
             </div>
         `;
@@ -126,6 +121,17 @@ function scrollTab(direction) {
     const tabNav = document.getElementById('tabNav');
     const scrollAmount = 200; 
     tabNav.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+}
+
+// FUNGSI PENCARIAN SHOPEE
+function cariDiShopee() {
+    const query = document.getElementById('searchInput').value;
+    if (query.trim() !== "") {
+        const url = `https://shopee.co.id/search?keyword=${encodeURIComponent(query)}`;
+        window.open(url, '_blank');
+    } else {
+        alert("Silakan masukkan kata kunci produk yang ingin dicari.");
+    }
 }
 
 // JALANKAN SAAT STARTUP
