@@ -4,7 +4,7 @@ let daftarProduk = [];
 
 // KONFIGURASI PAGINATION
 let currentPage = 1;
-const itemsPerPage = 10; // Sudah diubah menjadi 10 agar pas dengan grid 5x2
+const itemsPerPage = 10; // Pas untuk grid 2 kolom
 
 // FUNGSI MENGACAK URUTAN
 function shuffleArray(array) {
@@ -20,10 +20,9 @@ function buatTabOtomatis() {
     const tabNav = document.getElementById('tabNav');
     if (!tabNav) return;
     
-    // Ambil kategori unik dari data, tambahkan 'semua' di awal
     const kategoriUnik = ['semua', ...new Set(daftarProduk.map(p => p.kategori.toLowerCase().trim()))];
     
-    tabNav.innerHTML = ''; // Kosongkan tab sebelum diisi ulang
+    tabNav.innerHTML = ''; 
     
     kategoriUnik.forEach(kat => {
         const btn = document.createElement('button');
@@ -55,8 +54,8 @@ async function fetchProduk() {
                 };
             });
         
-        shuffleArray(daftarProduk); // Acak produk
-        buatTabOtomatis();          // Buat tab otomatis
+        shuffleArray(daftarProduk);
+        buatTabOtomatis();
         tampilkanProduk(); 
     } catch (error) {
         console.error("Gagal mengambil data:", error);
@@ -73,7 +72,6 @@ function tampilkanProduk(filter = 'semua', page = 1) {
     
     const produkFiltered = filter === 'semua' ? daftarProduk : daftarProduk.filter(p => p.kategori && p.kategori.toLowerCase().trim() === filter.toLowerCase());
     
-    // Logika Pagination
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const paginatedItems = produkFiltered.slice(startIndex, endIndex);
