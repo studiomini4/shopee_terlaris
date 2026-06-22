@@ -4,7 +4,7 @@ let daftarProduk = [];
 
 // KONFIGURASI PAGINATION
 let currentPage = 1;
-const itemsPerPage = 8; 
+const itemsPerPage = 10; // Sudah diubah menjadi 10 agar pas dengan grid 5x2
 
 // FUNGSI MENGACAK URUTAN
 function shuffleArray(array) {
