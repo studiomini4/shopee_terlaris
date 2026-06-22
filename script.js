@@ -80,7 +80,7 @@ function tampilkanProduk(filter = 'semua', page = 1) {
         if (!p.judul) return;
         grid.innerHTML += `
             <div class="card">
-                <img src="${p.gambar}" alt="${p.judul}" loading="lazy" style="object-fit: cover; object-position: center;">
+                <img src="${p.gambar}" alt="${p.judul}" loading="lazy" style="object-fit: contain; object-position: center; background-color: #fff; width: 100%; height: 160px;">
                 <div class="content">
                     <div class="title">${p.judul}</div>
                     <div class="sold-info">🔥 Terjual ${p.terjual || '0'}</div>
