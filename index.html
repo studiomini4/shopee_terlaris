@@ -15,10 +15,14 @@
         header h1 { margin: 0; color: white; font-size: 24px; font-weight: 800; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
         header p { margin: 0; color: #fff8f5; font-size: 0.9em; opacity: 0.9; }
 
-        /* NAVIGASI */
+        /* NAVIGASI BARU */
         .nav-wrapper { background: white; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .scroll-hint { font-size: 10px; color: #999; text-align: center; padding: 4px 0; background: #fff; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #eee; }
-        .tab-nav { display: flex; justify-content: center; overflow-x: auto; scrollbar-width: none; padding: 0 10px; }
+        
+        .nav-container { display: flex; align-items: center; justify-content: center; position: relative; }
+        .nav-arrow { border: none; background: white; cursor: pointer; padding: 15px 10px; font-weight: bold; color: var(--shopee-orange); font-size: 18px; z-index: 10; }
+        
+        .tab-nav { flex: 1; display: flex; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; scroll-behavior: smooth; padding: 0 5px; }
         .tab-nav::-webkit-scrollbar { display: none; }
         .tab-btn { padding: 15px 20px; border: none; background: none; cursor: pointer; font-weight: 600; color: #777; white-space: nowrap; border-bottom: 3px solid transparent; transition: 0.3s; }
         .tab-btn.active { color: var(--shopee-orange); border-bottom: 3px solid var(--shopee-orange); }
@@ -31,8 +35,6 @@
         /* KARTU PRODUK */
         .card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: 0.3s; display: flex; flex-direction: column; }
         .card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        
-        /* PERBAIKAN DI SINI: Mengubah object-fit menjadi contain dan menambah background */
         .card img { width: 100%; height: 160px; object-fit: contain; object-position: center; background-color: #ffffff; }
         
         .content { padding: 10px; flex-grow: 1; display: flex; flex-direction: column; }
@@ -57,7 +59,11 @@
 
 <div class="nav-wrapper">
     <div class="scroll-hint">← Geser untuk kategori lain →</div>
-    <div class="tab-nav" id="tabNav"></div>
+    <div class="nav-container">
+        <button class="nav-arrow" onclick="scrollTab(-1)">&#10094;</button>
+        <div class="tab-nav" id="tabNav"></div>
+        <button class="nav-arrow" onclick="scrollTab(1)">&#10095;</button>
+    </div>
 </div>
 
 <div class="container" id="productGrid"></div>
