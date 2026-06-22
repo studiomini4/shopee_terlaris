@@ -84,7 +84,7 @@ function tampilkanProduk(filter = 'semua', page = 1) {
                 <div class="content">
                     <div class="title">${p.judul}</div>
                     <div class="sold-info">🔥 Terjual ${p.terjual || '0'}</div>
-                    <a href="${p.link}" target="_blank" class="btn-shopee">Beli Sekarang</a>
+                    <a href="${p.link}" target="_blank" class="btn-shopee">Lihat + Beli</a>
                 </div>
             </div>
         `;
