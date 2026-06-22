@@ -27,6 +27,11 @@
         .tab-btn { padding: 15px 20px; border: none; background: none; cursor: pointer; font-weight: 600; color: #777; white-space: nowrap; border-bottom: 3px solid transparent; transition: 0.3s; }
         .tab-btn.active { color: var(--shopee-orange); border-bottom: 3px solid var(--shopee-orange); }
 
+        /* SEARCH BAR */
+        .search-container { display: flex; justify-content: center; padding: 15px; background: #fff; border-bottom: 1px solid #eee; gap: 5px; }
+        .search-container input { padding: 10px; width: 70%; border: 1px solid #ddd; border-radius: 5px; outline: none; }
+        .search-container button { padding: 10px 20px; background: var(--shopee-orange); color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+
         /* GRID PRODUK */
         .container { max-width: 1200px; margin: 20px auto; display: grid; gap: 15px; padding: 0 15px; grid-template-columns: repeat(2, 1fr); }
         @media (min-width: 768px) { .container { grid-template-columns: repeat(3, 1fr); } }
@@ -58,11 +63,15 @@
 </header>
 
 <div class="nav-wrapper">
-    <div class="scroll-hint">← Pengguna mobile tekan panah untuk menggeser →</div>
+    <div class="scroll-hint">← Geser untuk kategori lain →</div>
     <div class="nav-container">
         <button class="nav-arrow" onclick="scrollTab(-1)">&#10094;</button>
         <div class="tab-nav" id="tabNav"></div>
         <button class="nav-arrow" onclick="scrollTab(1)">&#10095;</button>
+    </div>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Cari produk di Shopee..." onkeydown="if(event.key === 'Enter') cariDiShopee()">
+        <button onclick="cariDiShopee()">Cari</button>
     </div>
 </div>
 
@@ -73,5 +82,14 @@
 </footer>
 
 <script src="script.js"></script>
+<script>
+    // Fungsi untuk pesan saat keluar
+    window.addEventListener('beforeunload', function (e) {
+        const message = "Yakin ingin keluar? Barang yang kamu cari tidak ada? Kamu bisa cari langsung di kolom pencarian Shopee tanpa harus keluar dari website kami. Terima kasih sudah berkunjung!";
+        e.preventDefault();
+        e.returnValue = message;
+        return message;
+    });
+</script>
 </body>
 </html>
