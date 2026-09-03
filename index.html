@@ -285,14 +285,11 @@
             gap: 15px;
         }
 
-        .feature, .box, .article {
+        .feature {
             background: #fff;
             padding: 18px;
             border-radius: 18px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-        }
-
-        .feature {
             text-align: center;
             font-weight: 600;
             font-size: 14px;
@@ -386,26 +383,6 @@
             margin-top: auto;
         }
 
-        /* INFO GRID & ARTICLES */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-
-        .articles {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-        }
-
-        .article .thumb {
-            height: 120px;
-            background: #f2f2f2;
-            border-radius: 12px;
-            margin-bottom: 10px;
-        }
-
         /* CTA & FOOTER */
         .cta {
             max-width: 1200px;
@@ -438,7 +415,7 @@
 
         /* RESPONSIVE DESIGN */
         @media (max-width: 900px) {
-            .hero, .info-grid, .articles {
+            .hero {
                 grid-template-columns: 1fr;
             }
             .features {
@@ -530,22 +507,6 @@
         <img src="https://billing.exabytes.co.id/assets/exabytes/img/affiliate/hosting/728x90-feb24-affiliate-hosting.jpg" alt="Exabytes Business Web Hosting" width="728" height="90" border="0">
     </a>
 </div>
-
-<section class="section info-grid">
-    <div class="box">⚡ Flash Sale + Countdown</div>
-    <div class="box">🎁 Pilih satu produk, lakukan transaksinya bersama shopee</div>
-    <div class="box">🏆 Produk Pilihan Admin Hari Ini</div>
-</section>
-
-<section class="section">
-    <h2 class="section-title">📖 Artikel & Tips Belanja</h2>
-    <div class="articles">
-        <div class="article"><div class="thumb"></div><b>10 Alat Dapur Murah</b></div>
-        <div class="article"><div class="thumb"></div><b>Perlengkapan Sekolah</b></div>
-        <div class="article"><div class="thumb"></div><b>Mesin Jahit Mini Worth It?</b></div>
-        <div class="article"><div class="thumb"></div><b>Cara Dapat Voucher</b></div>
-    </div>
-</section>
 
 <section class="cta">
     <div>
